@@ -141,10 +141,17 @@
             chatWindow.scrollTop = chatWindow.scrollHeight;
 
             try {
-                // mengirim ke flask
-                const response = await fetch('/chat', {
+                // mengirim ke flask, namun ada masalah karena port tdk sama
+                // const response = await fetch('/chat', {
+                //     method: 'POST',
+                //     headers: { 'Content-Type': 'application/json' },
+                //     body: JSON.stringify({ message: message })
+                // });
+                const response = await fetch('http://localhost:5000/chat', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
                     body: JSON.stringify({ message: message })
                 });
 
